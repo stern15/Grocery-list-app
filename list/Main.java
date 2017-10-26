@@ -64,37 +64,41 @@ public class Main {
     }
 
     public static void addItem() {
-        System.out.println("Please enter the item to be added to the grocery list: ");
+        System.out.print("Please enter the item to be added to the grocery list: ");
         String inputItem = sc.nextLine();
         groceryListObj.addArrayListItem(inputItem);
-        System.out.println(inputItem+" successfully added...");
+        System.out.println();
+        System.out.println("\t"+inputItem+" successfully added...");
     }
     public static void modifyItem(){
-        System.out.println("Please select the item number:");
-        int noItem = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Please enter the replacement item:");
-        String newReplacementItem = sc.nextLine();
-        groceryListObj.changeArrayListItem(noItem-1,newReplacementItem);
-        System.out.println("The item no "+noItem+" successfully replaced "+newReplacementItem);
+        System.out.print("Please select the current item to be replaced: ");
+        String currentItem = sc.nextLine();
+        System.out.print("Please enter the replacement item: ");
+        String newItem = sc.nextLine();
+        System.out.println();
+        groceryListObj.changeArrayListItem(currentItem,newItem);
+        System.out.println("\t"+"Item "+currentItem+" successfully replaced buy "+newItem);
 
     }
+
     public static void removeItem() {
-        System.out.println("Please select the item to remove:");
-        int noItem =sc.nextInt();
-        sc.nextLine();
-        groceryListObj.removeArrayListItem(noItem-1);
-        System.out.println("The item no "+noItem+" successfully removed...");
+        System.out.print("Please enter the item to be removed: ");
+        String remItem =sc.nextLine();
+        groceryListObj.removeArrayListItem(remItem);
+        System.out.println();
+        System.out.print("\t"+"The item "+remItem+" successfully removed...");
 
     }
     public static void searchItem(){
-        System.out.println("Please enter the item to search:");
+        System.out.print("Please enter the item to search: ");
         String searchItem = sc.nextLine();
-        if(groceryListObj.searchArrayListItem(searchItem)!=null){
-            System.out.println(searchItem+" is found in our grocery list!");
+        if(groceryListObj.searchItem(searchItem)){
+            System.out.println();
+            System.out.println("\t"+searchItem+" is found in our grocery list!");
         }
         else {
-            System.out.println(searchItem+" is NOT found in our grocery list!");
+            System.out.println();
+            System.out.println("\t"+searchItem+" is NOT found in our grocery list!");
         }
 
     }
